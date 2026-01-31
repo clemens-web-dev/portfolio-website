@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clemens Barth Portfolio Website">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="image">
+            <img 
+                src="images/Portrait_Image_Clemens.jpeg" alt="Portrait of Clemens" width="64" height="64">
+        </div>
+        <div class="navbarmiddle">
+            <a href="#header">Home</a>
+            <a href="#aboutme">Über Mich</a>
+            <a href="#projects">Projekte</a>
+            <a href="#">Blogs</a>
+        </div>
+        <div class="navbarbutton">
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header id="header">
+        <div class="heroleft">
+            <div class="herotextleft">
+                <h1 class="heroname">CLEMENS BARTH</h1>
+                <h1 class="herotext">DIGITAL</h1>
+            </div>
+        </div>
+        <div class="heromiddle">
+            <img src="images/Portrait_Image_Clemens.jpeg" alt="Portrait von Clemens Barth" width="64" height="64">
+        </div>
+        <div class="heroright">
+            <div class="herotextright">
+                <h1 class="herotext">DESIGNER</h1>
+                <p class="herodescription">Ich bin ein Schüler und WebDesigner &<br>-&nbsp;Developer</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="aboutme">
+        <div class="aboutmetext">
+            <div class="aboutmeheader">
+                <h2>Über mich</h2>
+                <p>Ich beschäftige mich intensiv mit Web-Development und entwickle responsive Websites mit HTML, CSS und JavaScript.<br><br>Aktuell liegt mein Fokus darauf, sauberen Code zu schreiben und moderne Layouts sowie Interaktionen umzusetzen. Ziel ist es, meine Fähigkeiten auszubauen und praktische Erfahrung zu sammeln</p>
+            </div>
+            <div class="aboutmeskills">
+                <div class="mainfocus">
+                    <h4>Schwerpunkt</h4>
+                    <div class="mainfocusfacts">
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript (<em>aktuell im Lernprozess</em>)</li>
+                            <li>C</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="lowfocus">
+                    <h4>Weitere Erfahrungen</h4>
+                    <div class="lowfocusfacts">
+                        <ul>
+                            <li>Python (<em>Grundkenntnisse</em>)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="aboutmepicture"></div>
+    </section>
+
+    <section id="projects">
+        <div class="projectsinfo">
+            <h2>Ausgewählte Projekte</h2>
+            <p>Einige Highlights meiner letzten Arbeiten</p>
+        </div>
+        <div class="cards">
+            <div class="cardself">
+                <h3>Portfolio Website</h3>
+                <div class="cardspictures">
+                    <img src="" alt="" width="" height="">
+                </div>
+                <p>Eine responsive Portfolio-Website, erstellt mit HTML, CSS und JavaScript.</p>
+                <div class="cardsstack">
+                    <img src="images/logo_html.webp" alt="Logo von HTML" width="512" height="512">
+                    <img src="images/logo_css.webp" alt="Logo von CSS" width="1280" height="1280">
+                    <img src="images/logo_js.png" alt="Logo von JavaScript" width="1200" height="900">
+                </div>
+                <div class="cardsbutton"><a href="">Live Demo</a></div>
+            </div>
+            <div class="cardself">
+                <h3>Wetter App</h3>
+                <div class="cardspictures">
+                    <img src="" alt="" width="" height="">
+                </div>
+                <p>Eine responsive Portfolio-Website, erstellt mit HTML, CSS und JavaScript.</p>
+                <div class="cardsstack">
+                    <img src="images/logo_html.webp" alt="Logo von HTML" width="512" height="512">
+                    <img src="images/logo_css.webp" alt="Logo von CSS" width="1280" height="1280">
+                    <img src="images/logo_js.png" alt="Logo von JavaScript" width="1200" height="900">
+                </div>
+                <div class="cardsbutton"><a href="">Live Demo</a></div>
+            </div>
+        </div>
+        <div class="projectscta">
+                <p><strong>Mehr Projekte kommen bald...</strong></p>
+                <div class="cardsbutton"><a href="">Schaue auf Github</a></div>
+            </div>
+    </section>
+
+    <section id="contact">
+        <div class="contactleft">
+            <img src="images/Portrait_Image_Clemens.jpeg" alt="Portrait von Clemens Barth" width="64" height="64">
+        </div>
+        <div class="contactright">
+            <h2>Kontakt</h2>
+            <p>Schreib mir gerne eine Nachricht oder kontaktiere mich direkt.</p>
+            <form id="contact-form">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="E-Mail" required>
+                <textarea name="message" placeholder="Nachricht" required></textarea>
+                <button type="submit">Übermittle Nachricht</button>
+            </form>
+            <div class="contactemail">
+                <p>Oder direkt per E-Mail:</p>
+                <a href="mailto:clemens-barth@gmx.at">clemens-barth@gmx.at</a>
+            </div>
+        </div>
+    </section>
+
+
+  <!--<script>
+const heroImg = document.querySelector('.heromiddle img');
+const aboutSection = document.querySelector('#aboutme');
+
+const MAX_X = 320; // Endposition rechts
+const MAX_Y = 650; // Endposition unten
+const SCROLL_DISTANCE = 500; // scroll range, wie weit es sich bewegt
+
+// Scroll-Ereignis
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    // Starteffekt: Offset vom Bild
+    const start = heroImg.offsetTop - window.innerHeight * 0.4;
+
+    // Progress 0 → 1 clampen
+    let progress = (scrollY - start) / SCROLL_DISTANCE;
+    progress = Math.min(Math.max(progress, 0), 1);
+
+    // Translate berechnen
+    const translateX = progress * MAX_X;
+    const translateY = progress * MAX_Y;
+
+    heroImg.style.transform = `translate(${translateX}px, ${translateY}px)`;
+});
+</script>-->
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init("75d-Qow_mp4soMGDq")
+
+        const form = document.getElementById("contact-form");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            emailjs.sendForm(
+                "service_mw0pbp3",
+                "template_9zg84f8",
+                this
+            ).then(() => {
+                alert("Nachricht erfolgreich gesendet!");
+                form.reset();
+            }, (error) => {
+                alert("Fehler beim Senden!");
+                console.log(error);
+            });
+        });
+    </script>
+</body>
+</html>
