@@ -1,3 +1,11 @@
+/*html, body {
+    max-width: 100%;
+    overflow-x: clip;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}*/
+
 p, h1, h2, h3{
     font-family: 'Bebas Neue', sans-serif;
 }
@@ -8,7 +16,7 @@ a{
 body{
     padding: 0px;
     margin: 0px;
-    overflow:scroll;
+    overflow: scroll;
 }
 
 .navbar, .heroleft, .heromiddle, .heroright{
@@ -21,6 +29,7 @@ body{
     left: 50%;
     transform: translateX(-50%);
     width: 500px;
+    max-width: 90%;
 
     display: flex;
     align-items: center;
@@ -88,6 +97,8 @@ body{
 }
 /* LEFT IMAGE */
 .navbar .image img {
+    object-fit: inherit;
+    aspect-ratio: 1181/1523;
     border-radius: 999px;
     height: 40px;
     width: 40px;
@@ -139,6 +150,7 @@ body{
     background-color: white;
 }
 
+
 .heroleft{
     width: 37%;
     height: 100vh;
@@ -171,12 +183,7 @@ body{
     z-index: 100;
 }
 
-/*.heromiddle img{
-    will-change: transform;
-    transition: transform 0.1s linear;
-    transform: none;
-    will-change: transform;
-}*/
+
 .heroright{  
     width: 37%;
     height: 100vh;
@@ -194,6 +201,16 @@ body{
     display: inline-block;
     width: fit-content;
     margin-left: 15px;
+}
+
+#header  .heromiddle img{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: none;
 }
 /*Hero Font*/
 h1{
@@ -243,6 +260,7 @@ h2{
     justify-content:  center;
 }
 
+
 .aboutmetext{
     width: auto;
     max-width: 47%;
@@ -252,16 +270,19 @@ h2{
     padding: 20px;
 }
 
-.aboutmeheader{
+.sectionheader{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
 }
 
-.aboutmeheader p{
+.sectionheader p{
+    color: #303030;
     text-align: center;
+    font-weight: lighter;
 }
+
 
 .aboutmepicture{
     width: 55%;
@@ -278,21 +299,14 @@ h2{
     min-height: 100vh;
 }
 
-.projectsinfo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 .cardspictures{
     width: 100%;
     height: 150px;
     background-color: red;
     border-radius: 5px;
 }
-.projectsinfo p{
-    color: #303030;
-    font-weight: lighter;
-}
+
 
 .cards{
     display: flex;
@@ -411,6 +425,13 @@ input, textarea{
     padding: 10px;
 }
 
+#footer{
+    border-top: 1px solid #303030;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .contactemail{
     display: flex;
     flex-direction: row;
@@ -430,3 +451,461 @@ input, textarea{
     color: rgb(152, 132, 132);
     text-decoration: underline;
 }
+
+
+@media (max-width: 1024px){
+    h1.herotext{
+        font-size: 375%;
+    }
+}
+
+
+/*@media (max-width: 900px){
+    #header{
+
+    }
+}*/
+
+
+
+#projectstry{
+    display: flex;
+    height: fit-content;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+    padding-bottom: 50px;
+    gap: 50px;
+}
+
+.project{
+    position: sticky;
+    top: 100px;
+
+    height: fit-content;/*
+    min-height: 100vh;
+    height: fit-content;*/
+    height: auto;
+    aspect-ratio: 16/9;
+    width: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+
+.project img{
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    z-index: 10;
+}
+
+
+.projectdescr{
+    position: absolute;
+    z-index: 11;
+
+    color: rgb(255, 255, 255);
+    text-decoration: #303030;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+
+    pointer-events: none;
+    
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+
+    border-radius: 18px;
+    padding: 20px 30px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.projectdescr p, .projectdescr h3{
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-shadow:
+        0 1px 2px rgba(0,0,0,0.6),
+        0 0 8px rgba(0,0,0,0.35);
+}
+
+.projecttag{
+    background-color: blueviolet;
+    border-radius: 999px;
+    padding: 7px 13px;
+    color: white;
+    width: fit-content;
+}
+
+section {
+    scroll-margin-top: 80px;
+}
+
+
+
+.project {
+    position: sticky;
+    top: 100px;
+
+    height: fit-content;
+    min-height: 100vh;
+    width: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    /* NEU: Smooth Scaling */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform-origin: center top;
+    z-index: 10;
+}
+
+/* Standard: leicht verkleinert */
+.project:not(.active) {
+    transform: scale(0.95);
+    opacity: 0.9;
+}
+
+/* Aktives Projekt: normal */
+.project.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+
+#skills{
+  padding: 100px 20px;
+  background-color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  height: fit-content;
+  min-height: 100vh;
+  
+}
+
+.skills-header h2{
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.skills-header p{
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 50px;
+}
+
+.skills-flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.skill{
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.skill img{
+  width: 60px;
+  height: 60px;
+  background-color: white;
+}
+
+.skill h3{
+  font-size: 1.2rem;
+}
+
+.skill span{
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.skill-bar{
+  width: 100%;
+  height: 15px;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-fill{
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #6a0dad, #8e44ad);
+  border-radius: 10px;
+  transition: width 2s ease-in-out;
+}
+
+
+/* Grundstruktur Timeline */
+
+#timeline {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#timeline h2,
+#timeline p {
+  text-align: center;
+}
+
+/* Container der Timeline */
+.timeline-container {
+  position: relative;
+  padding: 50px 0;
+}
+
+/* Mittlere Linie */
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: #ccc;
+}
+
+/* Timeline-Boxen */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 30px;
+}
+
+.timeline-item.left {
+  left: -6.3%;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+/* Punkte */
+.timeline-marker {
+  position: absolute;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #4a90e2;
+  border: 3px solid white;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-item.left .timeline-marker {
+  right: -12px;
+}
+
+.timeline-item.right .timeline-marker {
+  left: -12px;
+}
+
+/* Inhalt */
+.timeline-content {
+  background-color: rgba(255,255,255,0.9);
+  padding: 15px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+
+
+/*----------NEU----------*/
+.timeline-item.left .timeline-marker {
+    right: -12px; /* Schiebt den Punkt exakt auf die 4px breite Linie */
+}
+
+.timeline-item.right .timeline-marker {
+    left: -12px; /* Schiebt den Punkt exakt auf die 4px breite Linie */
+}
+
+@media (max-width: 920px){
+    #header {
+        height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .heroleft, .heroright, .heromiddle {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .heroleft {
+        padding-left: 25px !important;
+        align-items: flex-start;
+    }
+    .heroright{
+        padding-right: 25px !important;
+        align-items: flex-end;
+    }
+
+    #header .heromiddle img {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 180px !important;
+        margin: 10px 0 !important;
+    }
+
+    h1.herotext {
+        font-size: 3rem !important;
+    }
+}
+
+
+@media (max-width: 768px) {
+    /*html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }*/
+
+    .navbar{
+        width: fit-content;
+        min-width: 50%;
+        max-width: 90%;
+    }
+
+    .navbarmiddle{
+        display: none;
+        width: 0px;
+    }
+
+
+    
+
+    #aboutme {
+        text-align: center !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 40px 20px !important;
+    }
+
+    .aboutmetext {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .aboutmepicture{width: 0px;}
+    
+    .aboutmetext ul{
+        text-align: start !important;
+    }
+    .aboutmeskills {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    #projectstry {
+        overflow: visible !important;
+        position: sticky !important;
+    }
+
+    .project {
+        top: 80px !important;
+        width: 90% !important;
+        height: 50vh !important;
+        min-height: 0px !important;
+        margin-bottom: 20px !important;
+    }
+
+    #timeline {
+        padding-right: 40px !important;
+        overflow: hidden !important;
+    }
+
+    .timeline-line {
+        left: 20px !important;
+        transform: none !important;
+    }
+
+    .timeline-item {
+        width: 100% !important;
+        left: 0 !important;
+        padding-left: 50px !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+    }
+
+    .timeline-marker {
+        left: 12px !important;
+        right: auto !important;
+        transform: none !important;
+    }
+
+    input, textarea {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    #contact{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .contactright{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contactleft img{
+        width: 50%;
+        height: auto;
+    }
+}
+
