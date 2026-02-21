@@ -278,8 +278,8 @@ h2 {
 .project {
     position: sticky;
     top: 100px;
-    height: auto;
     aspect-ratio: 16/9;
+    height: auto;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -350,6 +350,8 @@ h2 {
     color: #000000;
     text-shadow: 0 1px 2px white;
 }
+
+
 
 
 /* Skills */
@@ -558,7 +560,6 @@ input, textarea {
 
 /* MOBILE OPTIMIERUNG (Gebündelt bis 920px) */
 @media (max-width: 920px) {
-    
     /* Navbar & Hamburger Menü */
     .navbar {
         width: 90%;
@@ -617,7 +618,11 @@ input, textarea {
     }
 
     h1.herotext {
-        font-size: 3rem;
+        font-size: 3.5rem;
+    }
+
+    h1.heroname{
+        font-size: 1.5rem;
     }
 
     /* Das Bild nicht mehr fixiert auf Mobile */
@@ -661,12 +666,17 @@ input, textarea {
     .project {
         width: 95%;
         height: auto;
-        aspect-ratio: auto; /* Fallback für Mobile */
+        aspect-ratio: 16/9; /* Fallback für Mobile */
         min-height: 40vh;
     }
     
     .projectdescr {
         width: 80%;
+    }
+
+    .project:not(.project-1) div.projectdescr div.projecttitle{
+        color: #000000;
+        text-shadow: 0 0px 0px rgba(255, 255, 255, 0);
     }
 
     /* Timeline */
