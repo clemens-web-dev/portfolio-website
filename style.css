@@ -674,9 +674,10 @@ input, textarea {
         width: 80%;
     }
 
-    .project:not(.project-1) div.projectdescr div.projecttitle{
+    .project:not(.project-1) div.projectdescr div.projecttitle p,
+    .project:not(.project-1) div.projectdescr div.projecttitle h3{
         color: #000000;
-        text-shadow: 0 0px 0px rgba(255, 255, 255, 0);
+        text-shadow: 0 0px 0px rgba(255, 255, 255, 0) !important;
     }
 
     /* Timeline */
@@ -726,4 +727,5 @@ input, textarea {
         box-sizing: border-box;
     }
 }
+
 
