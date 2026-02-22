@@ -9,7 +9,7 @@ html, body {
 body{overflow-x: hidden;}
 #projectstry {overflow-x: visible;}
 p, h1, h2, h3 {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: sans-serif;
     margin: 0;
 }
 
@@ -713,7 +713,7 @@ input, textarea {
 
     .contactleft img {
         width: 80%;
-        max-width: 33%;
+        max-width: 45%;
     }
 
     .contactright {
@@ -726,3 +726,4 @@ input, textarea {
         box-sizing: border-box;
     }
 }
+
