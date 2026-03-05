@@ -9,7 +9,7 @@ html, body {
 body{overflow-x: hidden;}
 #projectstry {overflow-x: visible;}
 p, h1, h2, h3 {
-    font-family: sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     margin: 0;
 }
 
@@ -128,6 +128,11 @@ section {
     to { transform: scale(1); opacity: 1; }
 }
 
+@keyframes slideInDown {
+    from { opacity: 0; transform: translateY(120px);}
+    to { opacity: 1; transform: translateY(0px)}
+}
+
 /* Hero */
 #header {
     display: flex;
@@ -208,19 +213,21 @@ h1.heroname {
     letter-spacing: -1.5px;
 }
 
-h1.herotext {
+h2.herotext {
     color: #303030;
     font-size: 400%;
     font-weight: bold;
     letter-spacing: -1.5px;
 }
 
-h1.herodescription {
+p.herodescription {
     color: #303030;
     font-weight: lighter;
 }
-
-h2 {
+h1.heroname, h2.herotext {
+    text-transform: uppercase;
+}
+h2:not(.herotext) {
     letter-spacing: -1.5px;
     font-size: 40px;
 }
@@ -245,6 +252,16 @@ h2 {
     padding: 20px 0;
 }
 
+.animate {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 1.4s ease, transform 0.8s ease;
+}
+
+.animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 .sectionheader {
     display: flex;
     flex-direction: column;
@@ -557,6 +574,9 @@ input, textarea {
     color: rgb(152, 132, 132);
     text-decoration: underline;
 }
+
+
+
 
 /* MOBILE OPTIMIERUNG (Gebündelt bis 920px) */
 @media (max-width: 920px) {
