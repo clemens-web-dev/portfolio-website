@@ -1070,7 +1070,7 @@ input, textarea {
         justify-content: center;
         align-items: center;
         padding-top: 80px; /* Platz für die Navbar */
-        height: 100vh;
+        height: 90vh;
     }
 
     .heroleft, .heroright, .heromiddle {
