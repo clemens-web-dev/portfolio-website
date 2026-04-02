@@ -1026,6 +1026,9 @@ input, textarea {
 
 /* MOBILE OPTIMIERUNG (Gebündelt bis 920px) */
 @media (max-width: 920px) {
+    * {
+        box-sizing: border-box;
+    }
     /* Navbar & Hamburger Menü */
     .navbar {
         width: 90%;
@@ -1067,6 +1070,7 @@ input, textarea {
         justify-content: center;
         align-items: center;
         padding-top: 80px; /* Platz für die Navbar */
+        height: 100vh;
     }
 
     .heroleft, .heroright, .heromiddle {
@@ -1235,9 +1239,28 @@ input, textarea {
     .ctabuttons .navbarbutton{
         display: block;
     }
+
     
+    /* Chatbot */
+
+    #chatbot-toogle-btn{
+        aspect-ratio: 1/1;
+        bottom: 20px;
+        right: 20px;
+        width: 20%;
+       
+    }
+
+    #chatbot-window {
+        width: 90%; 
+        max-width: 350px; 
+        right: 5%; 
+    }
+
+    #chatbot-window {
+        width: 85vw; /* Nutzt 85% der Bildschirmbreite */
+        right: 10px;
+        left: 10px; /* Zentriert es fast */
+        max-width: none;
+    }   
 }
-
-
-
-
