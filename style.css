@@ -614,8 +614,10 @@ input, textarea {
     border-top: 1px solid #303030;
     padding: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 15px;
 }
 
 .contactemail {
@@ -733,6 +735,7 @@ input, textarea {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
 }
 .updatescard{
     background: rgb(223, 220, 220);
@@ -833,6 +836,192 @@ input, textarea {
 .secondarybutton:hover{
     border: 1px solid #303030;
 }
+
+/* KI Chatbot */
+   
+    :root {
+        --brand-primary: #000000; 
+        --brand-text: #ffffff;
+        --bot-bg: #f4f4f5;
+        --user-bg: #000000;
+    }
+
+    /* Der Floating Button rechts unten */
+    #chatbot-toggle-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: var(--brand-primary);
+        color: var(--brand-text);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 9999;
+        transition: transform 0.3s ease;
+    }
+
+    #chatbot-toggle-btn:hover {
+        transform: scale(1.05);
+    }
+
+    /* Das Chat-Fenster (standardmäßig versteckt) */
+    #chatbot-window {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 350px;
+        height: 500px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        font-family: sans-serif;
+    }
+
+    #chatbot-window.active {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+    }
+
+    /* Header */
+    #chatbot-header {
+        background-color: var(--brand-primary);
+        color: var(--brand-text);
+        padding: 15px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #chatbot-close {
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+
+    /* Chat-Verlauf */
+    #chatbot-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .message {
+        max-width: 80%;
+        padding: 10px 14px;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .message.bot {
+        background-color: var(--bot-bg);
+        color: #000;
+        align-self: flex-start;
+        border-bottom-left-radius: 2px;
+    }
+
+    .message.bot.firstmessage{
+        background-color: white;
+        color: grey;
+    }
+
+    .message.user {
+        background-color: var(--user-bg);
+        color: var(--brand-text);
+        align-self: flex-end;
+        border-bottom-right-radius: 2px;
+    }
+
+    /* Eingabebereich */
+    #chatbot-input-area {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #eee;
+        background: #fff;
+    }
+
+    #chatbot-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        outline: none;
+    }
+
+    #chatbot-send {
+        background: var(--brand-primary);
+        color: var(--brand-text);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .chatbotinformation{
+        color: grey;
+        font-size: 10px;
+        text-align: center;
+        padding: 0px 0px 4px 0px;
+    }
+
+        /* Archiv-Panel */
+    #chatbot-archive-panel {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 100px);
+        background: white;
+        z-index: 100;
+        display: none; /* Standardmäßig versteckt */
+        flex-direction: column;
+        padding: 10px;
+        overflow-y: auto;
+    }
+
+    #chatbot-archive-panel.active {
+        display: flex;
+    }
+
+    .archive-item {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: background 0.2s;
+    }
+
+    .archive-item:hover {
+        background: #f9f9f9;
+    }
+
+    .archive-header {
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+
 
 
 /* MOBILE OPTIMIERUNG (Gebündelt bis 920px) */
