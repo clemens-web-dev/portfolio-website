@@ -524,28 +524,34 @@
         const messagesContainer = document.getElementById('chatbot-messages');
         const historyBtn = document.getElementById('chatbot-history-btn');
 
-        // Erstelle das Archiv-Panel dynamisch
+        // 1. Archiv-Panel mit "Neuer Chat" Button erstellen
         const archivePanel = document.createElement('div');
         archivePanel.id = 'chatbot-archive-panel';
-        archivePanel.innerHTML = '<div class="archive-header">Vergangene Chats <span id="close-archive" style="cursor:pointer">✕</span></div><div id="archive-list"></div>';
+        archivePanel.innerHTML = `
+            <div class="archive-header">
+                <span>Verlauf</span>
+                <span id="close-archive" style="cursor:pointer">✕</span>
+            </div>
+            <button id="start-new-chat-btn" style="width:100%; margin-bottom:10px; padding:8px; cursor:pointer; background:#000; color:#fff; border:none; border-radius:5px;">+ Neuer Chat</button>
+            <div id="archive-list"></div>
+        `;
         chatWindow.insertBefore(archivePanel, messagesContainer);
 
-        // 2. Speicher-Logik
-        // Beim Refresh: Aktuellen Chat archivieren und Anzeige leeren
+        // 2. Speicher-Logik beim Laden (Refresh)
         let currentHistory = JSON.parse(localStorage.getItem('chatbot_history')) || [];
         if (currentHistory.length > 0) {
             let archives = JSON.parse(localStorage.getItem('chatbot_archives')) || [];
             archives.push({ date: new Date().toLocaleString(), history: currentHistory });
-            if (archives.length > 5) archives.shift(); // Max 5 alte Chats
+            if (archives.length > 5) archives.shift();
             localStorage.setItem('chatbot_archives', JSON.stringify(archives));
             localStorage.removeItem('chatbot_history');
         }
 
-        let chatHistory = []; // Startet immer leer nach Refresh
+        let chatHistory = []; 
         let sessionId = localStorage.getItem('chatbot_session_id') || 'session_' + Math.random().toString(36).substring(2, 15);
         localStorage.setItem('chatbot_session_id', sessionId);
 
-        // 3. Funktionen
+        // 3. UI Funktionen
         function addMessageToUI(text, sender, save = true, isTyping = false) {
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message', sender);
@@ -554,11 +560,23 @@
             if(isTyping) msgDiv.id = msgId;
             messagesContainer.appendChild(msgDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
             if (save && !isTyping) {
                 chatHistory.push({ text, sender });
                 localStorage.setItem('chatbot_history', JSON.stringify(chatHistory));
             }
             return msgId;
+        }
+
+        // Funktion um den Chat-Zustand zu leeren (Neuer Chat)
+        function resetToNewChat() {
+            messagesContainer.innerHTML = '<div class="message bot">Hallo! Wie kann ich dir heute helfen?</div>';
+            chatHistory = [];
+            localStorage.removeItem('chatbot_history');
+            inputField.disabled = false;
+            inputField.placeholder = "Schreibe eine Nachricht...";
+            sendBtn.disabled = false;
+            archivePanel.classList.remove('active');
         }
 
         async function sendMessage() {
@@ -578,37 +596,42 @@
                 addMessageToUI(data.reply, 'bot');
             } catch (error) {
                 if (document.getElementById(typingId)) document.getElementById(typingId).remove();
-                addMessageToUI("Fehler: Server schläft noch...", 'bot');
+                addMessageToUI("Fehler: Server antwortet nicht.", 'bot');
             }
         }
 
-        // Archiv anzeigen
-        historyBtn.addEventListener('click', () => {
+        // 4. Event-Listener
+        historyBtn.onclick = () => {
             const list = document.getElementById('archive-list');
             list.innerHTML = '';
             const archives = JSON.parse(localStorage.getItem('chatbot_archives')) || [];
-            if (archives.length === 0) {
-                list.innerHTML = '<p style="font-size:0.8rem; color:grey;">Keine alten Chats gefunden.</p>';
-            }
-            archives.reverse().forEach((item, index) => {
+            
+            archives.reverse().forEach((item) => {
                 const el = document.createElement('div');
                 el.className = 'archive-item';
                 el.textContent = `Chat vom ${item.date}`;
                 el.onclick = () => {
-                    messagesContainer.innerHTML = ''; // Aktuellen Chat leeren
+                    messagesContainer.innerHTML = '';
+                    // Archiv-Modus: Input sperren
+                    inputField.disabled = true;
+                    inputField.placeholder = "Verlauf-Modus (schreibgeschützt)";
+                    sendBtn.disabled = true;
+                    
                     item.history.forEach(m => addMessageToUI(m.text, m.sender, false));
                     archivePanel.classList.remove('active');
                 };
                 list.appendChild(el);
             });
             archivePanel.classList.add('active');
-        });
+        };
 
+        document.getElementById('start-new-chat-btn').onclick = resetToNewChat;
         document.getElementById('close-archive').onclick = () => archivePanel.classList.remove('active');
+        
         toggleBtn.onclick = () => chatWindow.classList.add('active');
         closeBtn.onclick = () => chatWindow.classList.remove('active');
         sendBtn.onclick = sendMessage;
-        inputField.onkeypress = (e) => { if (e.key === 'Enter') sendMessage(); };
+        inputField.onkeypress = (e) => { if (e.key === 'Enter' && !inputField.disabled) sendMessage(); };
     </script>
 </body>
 </html>
