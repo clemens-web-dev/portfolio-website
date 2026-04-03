@@ -862,7 +862,9 @@ input, textarea {
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         z-index: 9999;
+        animation: slideInRight 1.5s ease forwards;
         transition: transform 0.3s ease;
+        
     }
 
     #chatbot-toggle-btn:hover {
@@ -1003,10 +1005,10 @@ input, textarea {
     }
 
     .archive-item {
-        padding: 10px;
+        padding: 12px;
         border-bottom: 1px solid #eee;
         cursor: pointer;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         transition: background 0.2s;
     }
 
@@ -1021,7 +1023,51 @@ input, textarea {
         justify-content: space-between;
     }
 
+    #chatbot-archive-panel {
+        position: absolute;
+        top: 50px; 
+        left: 0;
+        width: 100%;
+        height: calc(100% - 50px); 
+        background: white;
+        z-index: 100;
+        display: none;
+        flex-direction: column;
+        padding: 15px;
+        box-sizing: border-box; 
+        overflow-y: auto;
+    }
 
+    #chatbot-archive-panel.active {
+        display: flex;
+    }
+
+
+    #start-new-chat-btn {
+        width: 100%;
+        min-height: 40px; 
+        margin-bottom: 15px;
+        padding: 10px;
+        cursor: pointer;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        flex-shrink: 0; 
+    }
+
+
+    #archive-list {
+        flex-grow: 1; 
+        overflow-y: auto; 
+    }
+
+
+
+    .archive-item:hover {
+        background: #f4f4f4;
+    }
 
 
 /* MOBILE OPTIMIERUNG (Gebündelt bis 920px) */
@@ -1240,7 +1286,6 @@ input, textarea {
         display: block;
     }
 
-    
     /* Chatbot */
 
     #chatbot-toogle-btn{
@@ -1255,12 +1300,17 @@ input, textarea {
         width: 90%; 
         max-width: 350px; 
         right: 5%; 
-    }
-
+    }    
+}
+@media (max-width: 400px) {
     #chatbot-window {
-        width: 85vw; /* Nutzt 85% der Bildschirmbreite */
+        width: 85vw; 
         right: 10px;
         left: 10px; /* Zentriert es fast */
         max-width: none;
-    }   
+    }
 }
+
+
+
+
